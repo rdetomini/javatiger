@@ -1,8 +1,12 @@
 package com.jagrinho.jatiger.api.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jagrinho.jatiger.api.model.outputs.jogada.ViewJogadaModel;
 import com.jagrinho.jatiger.domain.services.JogadaService;
 
 import lombok.AllArgsConstructor;
@@ -12,4 +16,10 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class JogadaController {
     private final JogadaService jogadaService;
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public ViewJogadaModel realizarJogada() {
+        return new ViewJogadaModel();
+    }
 }
