@@ -2,6 +2,7 @@ package com.jagrinho.jatiger.domain.services;
 
 import org.springframework.stereotype.Service;
 
+import com.jagrinho.jatiger.domain.entities.Jogada;
 import com.jagrinho.jatiger.domain.repositories.JogadaRepository;
 
 import lombok.AllArgsConstructor;
@@ -10,4 +11,11 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class JogadaService {
     private final JogadaRepository jogadaRepository;
+    private final ConfiguracaoService configuracaoService;
+    private final EmpresaService empresaService;
+
+    public Jogada realizarJogada() {
+        
+        return new Jogada();
+    } 
 }

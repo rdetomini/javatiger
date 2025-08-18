@@ -32,8 +32,8 @@ public class ConfiguracaoController {
         return ResponseEntity.ok(new ViewConfiguracaoModel());
     }
 
-    @GetMapping("{id}")
-    public ResponseEntity<ViewConfiguracaoModel> getById(@PathVariable long id) {
+    @GetMapping("{empresaId}")
+    public ResponseEntity<ViewConfiguracaoModel> getById(@PathVariable long empresaId) {
         return ResponseEntity.ok(new ViewConfiguracaoModel());
     }
 }
