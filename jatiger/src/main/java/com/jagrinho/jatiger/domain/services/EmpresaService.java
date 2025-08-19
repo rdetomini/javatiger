@@ -1,6 +1,7 @@
 package com.jagrinho.jatiger.domain.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -17,8 +18,11 @@ public class EmpresaService {
     public List<Empresa> findAll() {
         return empresaRepository.findAll();
     } 
+    public Optional<Empresa> findById(long id) {
+        return empresaRepository.findById(id);
+    } 
 
-    public Empresa create(Empresa empresa) {
+    public Empresa salvar(Empresa empresa) {
         return empresaRepository.save(empresa);
     }
 }   

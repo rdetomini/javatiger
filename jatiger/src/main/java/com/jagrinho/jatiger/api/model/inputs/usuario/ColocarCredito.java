@@ -7,7 +7,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CreateUsuarioModel {
-    public BigDecimal credito;
+public class ColocarCredito {
     public Long empresa_id;
+    public Long usuario_id;
+    public BigDecimal credito;
 }

@@ -19,19 +19,28 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded=true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="usuarios")
+@Table(name = "usuarios")
 public class Usuario {
+
     @Id
     @EqualsAndHashCode.Include
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private BigDecimal credito;
     private BigDecimal quantidade_arrecadada;
     @ManyToOne
     private Empresa empresa;
-    @OneToMany(mappedBy="usuario")
+    @OneToMany(mappedBy = "usuario")
     private List<Jogada> jogadas;
+
+    public void adicionarCredito(BigDecimal credito_entrada) {
+        if (credito == null) {
+            credito = BigDecimal.ZERO;
+        }
+        
+        credito = credito.add(credito_entrada);
+    }
 }

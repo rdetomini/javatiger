@@ -1,6 +1,7 @@
 package com.jagrinho.jatiger.domain.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -14,11 +15,15 @@ import lombok.AllArgsConstructor;
 public class UsuarioService {
     private final UsuarioRepository usuarioRepository;
 
-    public Usuario create(Usuario usuario) {
+    public Usuario salvar(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
 
     public List<Usuario> findAll() {
         return usuarioRepository.findAll();
+    }
+
+    public Optional<Usuario> findById(long id) {
+        return usuarioRepository.findById(id);
     }
 }

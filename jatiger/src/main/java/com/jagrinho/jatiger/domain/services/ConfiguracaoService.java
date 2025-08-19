@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.jagrinho.jatiger.domain.entities.Configuracao;
 import com.jagrinho.jatiger.domain.repositories.ConfiguracaoRepository;
 
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 
 @Service
@@ -17,7 +18,8 @@ public class ConfiguracaoService {
     public List<Configuracao> findByEmpresaId(long empresaId) {
         return configuracaoRepository.findByEmpresaId(empresaId);
     }
-    public Configuracao create(Configuracao configuracao) {
+    @Transactional
+    public Configuracao salvar(Configuracao configuracao) {
         return configuracaoRepository.save(configuracao);
     }
 }

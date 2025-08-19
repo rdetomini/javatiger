@@ -29,7 +29,7 @@ public class Empresa {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private BigDecimal arrecadado;
-    @OneToOne
+    @OneToOne(mappedBy="empresa")
     private Configuracao configuracao;
     @OneToMany(mappedBy="empresa")
     private List<Usuario> usuarios;

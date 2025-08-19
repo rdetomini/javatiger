@@ -24,17 +24,17 @@ public class ModelMapperConfig {
     @Bean
     public ModelMapper modelMapper() {
         var modelMapper = new ModelMapper();
-        modelMapper.createTypeMap(Empresa.class, CreateEmpresaModel.class);
+        modelMapper.createTypeMap(CreateEmpresaModel.class, Empresa.class);
         modelMapper.createTypeMap(Empresa.class, ViewEmpresaModel.class);
 
-        modelMapper.createTypeMap(Configuracao.class, CreateConfiguracaoModel.class);
-        modelMapper.createTypeMap(Configuracao.class, UpdateConfiguracaoModel.class);
+        modelMapper.createTypeMap(CreateConfiguracaoModel.class, Configuracao.class);
+        modelMapper.createTypeMap(UpdateConfiguracaoModel.class, Configuracao.class);
         modelMapper.createTypeMap(Configuracao.class, ViewConfiguracaoModel.class);
 
-        modelMapper.createTypeMap(Usuario.class, CreateUsuarioModel.class);
+        modelMapper.createTypeMap(CreateUsuarioModel.class, Usuario.class);
         modelMapper.createTypeMap(Usuario.class, ViewUsuarioModel.class);
 
-        modelMapper.createTypeMap(Jogada.class, CreateJogadaModel.class);
+        modelMapper.createTypeMap(CreateJogadaModel.class, Jogada.class);
         modelMapper.createTypeMap(Jogada.class, ViewJogadaModel.class);
         return modelMapper;
     }
