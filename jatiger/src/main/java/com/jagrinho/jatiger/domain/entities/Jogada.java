@@ -1,6 +1,7 @@
 package com.jagrinho.jatiger.domain.entities;
 
 import java.math.BigDecimal;
+import java.util.concurrent.ThreadLocalRandom;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,4 +34,10 @@ public class Jogada {
     private Boolean jogada_ganha;
     @ManyToOne
     private Usuario usuario;
+
+    public boolean realizarJogada(BigDecimal chanceVitoria) {
+        double numeroAleatorio = ThreadLocalRandom.current().nextDouble(0, 100);
+
+        return BigDecimal.valueOf(numeroAleatorio).compareTo(chanceVitoria) < 0;
+    }
 }

@@ -21,16 +21,33 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="empresas")
-@EqualsAndHashCode(onlyExplicitlyIncluded=true)
+@Table(name = "empresas")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Empresa {
+
     @Id
     @EqualsAndHashCode.Include
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private BigDecimal arrecadado;
-    @OneToOne(mappedBy="empresa")
+    @OneToOne(mappedBy = "empresa")
     private Configuracao configuracao;
-    @OneToMany(mappedBy="empresa")
+    @OneToMany(mappedBy = "empresa")
     private List<Usuario> usuarios;
+
+    public void adicionarQuantidadeArrecadada(BigDecimal credito) {
+        if (arrecadado == null) {
+            arrecadado = BigDecimal.ZERO;
+        }
+
+        arrecadado = arrecadado.add(credito);
+    }
+
+    public void diminuirArrecadacao(BigDecimal creditoUtilizado) {
+        if (arrecadado == null) {
+            arrecadado = BigDecimal.ZERO;
+        }
+
+        arrecadado = arrecadado.subtract(creditoUtilizado);
+    }
 }

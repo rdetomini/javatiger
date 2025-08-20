@@ -1,7 +1,5 @@
 package com.jagrinho.jatiger.api.controller;
 
-import java.util.List;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,9 +56,9 @@ public class ConfiguracaoController {
     }
 
     @GetMapping("/{empresaId}")
-    public ResponseEntity<List<ViewConfiguracaoModel>> findByEmpresaId(@PathVariable long empresaId) {
-        List<Configuracao> configuracoes = configuracaoService.findByEmpresaId(empresaId);
-        List<ViewConfiguracaoModel> configuracoesModel = modelMapper.converter(configuracoes, ViewConfiguracaoModel.class);
+    public ResponseEntity<ViewConfiguracaoModel> findByEmpresaId(@PathVariable long empresaId) {
+        Configuracao configuracoes = configuracaoService.findByEmpresaId(empresaId);
+        ViewConfiguracaoModel configuracoesModel = modelMapper.converter(configuracoes, ViewConfiguracaoModel.class);
         return ResponseEntity.ok(configuracoesModel);
     }
 

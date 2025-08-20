@@ -36,11 +36,27 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private List<Jogada> jogadas;
 
-    public void adicionarCredito(BigDecimal credito_entrada) {
+    public void adicionarCredito(BigDecimal creditoEntrada) {
         if (credito == null) {
             credito = BigDecimal.ZERO;
         }
         
-        credito = credito.add(credito_entrada);
+        credito = credito.add(creditoEntrada);
+    }
+
+    public void adicionarQuantidadeArrecadada(BigDecimal creditoEntrada) {
+        if (quantidade_arrecadada == null) {
+            quantidade_arrecadada = BigDecimal.ZERO;
+        }
+
+        quantidade_arrecadada = quantidade_arrecadada.add(creditoEntrada);
+    }
+
+    public void diminuirCredito(BigDecimal creditoUtilizado) {
+        if (credito == null) {
+            credito = BigDecimal.ZERO;
+        }
+
+        credito = credito.subtract(creditoUtilizado);
     }
 }
