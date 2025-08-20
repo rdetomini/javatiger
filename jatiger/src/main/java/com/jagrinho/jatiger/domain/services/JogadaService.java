@@ -9,6 +9,7 @@ import com.jagrinho.jatiger.domain.entities.Configuracao;
 import com.jagrinho.jatiger.domain.entities.Empresa;
 import com.jagrinho.jatiger.domain.entities.Jogada;
 import com.jagrinho.jatiger.domain.entities.Usuario;
+import com.jagrinho.jatiger.domain.exception.NegocioException;
 import com.jagrinho.jatiger.domain.repositories.JogadaRepository;
 
 import jakarta.transaction.Transactional;
@@ -32,7 +33,7 @@ public class JogadaService {
         Configuracao configuracao = configuracaoService.findByEmpresaId(empresa.getId());
         // Verifica se o usuário tem creditos suficiente para realizar a jogada
         if (usuario.getCredito() == null || usuario.getCredito().compareTo(credito_utilizado) < 0) {
-            throw new RuntimeException("Usuário não tem créditos suficientes");
+             throw new NegocioException("Usuário não tem créditos suficientes");
         }
 
         Jogada jogada = new Jogada();
