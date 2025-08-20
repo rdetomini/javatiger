@@ -32,8 +32,7 @@ public class JogadaService {
         Configuracao configuracao = configuracaoService.findByEmpresaId(empresa.getId());
         // Verifica se o usuário tem creditos suficiente para realizar a jogada
         if (usuario.getCredito() == null || usuario.getCredito().compareTo(credito_utilizado) < 0) {
-            new RuntimeException("Usuário não tem créditos suficientes");
-            return new Jogada();
+            throw new RuntimeException("Usuário não tem créditos suficientes");
         }
 
         Jogada jogada = new Jogada();
@@ -59,7 +58,7 @@ public class JogadaService {
             empresa.adicionarQuantidadeArrecadada(credito_utilizado);
         }
 
-        jogadaRepository.save(jogada);
-        return jogada;
+        Jogada jogadaRetorno = jogadaRepository.save(jogada);
+        return jogadaRetorno;
     }
 }
